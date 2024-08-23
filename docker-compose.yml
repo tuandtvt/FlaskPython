@@ -1,0 +1,56 @@
+# version: '3.8'
+
+# services:
+#     talent_jobs:
+#         container_name: talent_jobs
+#         build: .
+#         restart: always
+#         volumes:
+#             - ./:/app
+#         ports:
+#             - "5006:5000"
+#         networks:
+#             - python
+# networks:
+#     python:
+#         driver: bridge
+
+version: '3.8'
+
+services:
+    talent_jobs:
+        container_name: talent_jobs
+        build: .
+        restart: always
+        volumes:
+            - ./:/app
+        ports:
+            - "5006:5000"
+        networks:
+            - python
+        environment:
+            - DB_HOST=mysql
+            - DB_PORT=3306
+            - DB_DATABASE=fm_db
+            - DB_USERNAME=famuser
+            - DB_PASSWORD=famupassword
+        depends_on:
+            - mysql
+
+    mysql:
+        container_name: mysql
+        image: mysql:latest
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: fm_db
+            MYSQL_USER: famuser
+            MYSQL_PASSWORD: famupassword
+        ports:
+            - "3306:3306"
+        networks:
+            - python
+
+networks:
+    python:
+        driver: bridge
