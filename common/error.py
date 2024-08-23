@@ -1,4 +1,4 @@
-# # create array code and array messsage in error.py
+# common/error.py
 
 ERROR = [
     {
@@ -15,17 +15,14 @@ ERROR = [
     },
     {
         "code": 409,
-        "message": "Missing required fields"
+        "message": "Email đã cũ"
     },
     {
         "code": 500,
         "message": "Internal Server Error"
     }
-    
 ]
 
-def get_error_message(code):
-    for error in ERROR:
-        if error["code"] == code:
-            return error["message"]
-    return "Unknown Error"
+def generate_error_response(code):
+    message = next((error['message'] for error in ERROR if error['code'] == code), "Unknown Error")
+    return {'message': message, 'status_code': code}
