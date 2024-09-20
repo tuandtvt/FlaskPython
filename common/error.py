@@ -2,6 +2,14 @@
 
 ERROR = [
     {
+        "code": 400,
+        "message": "Bad Request"
+    },
+    {
+        "code": 401,
+        "message": "Unauthorized"
+    },
+    {
         "code": 403,
         "message": "Forbidden"
     },
@@ -15,13 +23,14 @@ ERROR = [
     },
     {
         "code": 409,
-        "message": "Email đã cũ"
+        "message": "Email already exists"
     },
     {
         "code": 500,
         "message": "Internal Server Error"
     }
 ]
+
 
 def generate_error_response(code):
     message = next((error['message'] for error in ERROR if error['code'] == code), "Unknown Error")

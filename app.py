@@ -12,11 +12,11 @@ app = Flask(__name__)
 migrate = Migrate(app, db)
 
 # Get the values
-DB_DATABASE = "fm_db"
-DB_USERNAME = "famuser"
-DB_PASSWORD = "famupassword"
-DB_APPNAME = "localhost"
-DB_PORT = "3306"
+DB_DATABASE = os.getenv('DB_DATABASE')
+DB_USERNAME = os.getenv('DB_USERNAME')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_APPNAME = os.getenv('DB_APPNAME')
+DB_PORT = os.getenv('DB_PORT')
 
 #sub string the values URI 
 DB_URI = f'mysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_APPNAME}:{DB_PORT}/{DB_DATABASE}'

@@ -1,20 +1,3 @@
-# version: '3.8'
-
-# services:
-#     talent_jobs:
-#         container_name: talent_jobs
-#         build: .
-#         restart: always
-#         volumes:
-#             - ./:/app
-#         ports:
-#             - "5006:5000"
-#         networks:
-#             - python
-# networks:
-#     python:
-#         driver: bridge
-
 version: '3.8'
 
 services:
